@@ -3,7 +3,7 @@
 - libinput-tools
 - libpulse
 
-- nodejs (>22)
+- nodejs (^22)
 
 ## run
 just install dependencies (npm install) & run the main.js with root permissions
