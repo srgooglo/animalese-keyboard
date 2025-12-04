@@ -11,6 +11,11 @@ let withCtrl = false
 
 // TODO: fix modifier keys triggers
 async function main() {
+	if (!process.argv[2]) {
+		console.error("Usage: node main.js <device>")
+		return false
+	}
+
 	// first create the device
 	const audioDevice = new AudioDevice()
 	audioDevice.initialize()
@@ -24,7 +29,7 @@ async function main() {
 	await sfxFont.load(path.join(fonts_path, "sfx", "font.js"))
 
 	// create the event listener
-	Libinput.listenDeviceEvents("/dev/input/event7", (event) => {
+	Libinput.listenDeviceEvents(process.argv[2], (event) => {
 		if (!event) {
 			return null
 		}
