@@ -16,6 +16,8 @@ async function main() {
 		return false
 	}
 
+	console.log("Using kernel input events >", process.argv[2])
+
 	// first create the device
 	const audioDevice = new AudioDevice()
 	audioDevice.initialize()
