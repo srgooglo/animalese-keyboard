@@ -7,7 +7,7 @@
 
 ## run
 just install dependencies (npm install) & run the main.js with root permissions
-> node main.js <device>
+> sudo node main.js <device>
 
 ### get devices
-> libinput list-devices
+> sudo libinput list-devices
