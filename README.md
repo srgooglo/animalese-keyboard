@@ -6,4 +6,4 @@
 - nodejs (>23)
 
 ## run
-just run the main.js with root permissions
+just install dependencies (npm install) & run the main.js with root permissions
