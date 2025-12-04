@@ -9,6 +9,8 @@ let withAlt = false
 let withCtrl = false
 
 // TODO: mute on fullscreen or secret mode
+// TODO: support contiuous trigger
+// TODO: add system tray
 async function main() {
 	const args = getArgs()
 
