@@ -1,0 +1,15 @@
+{
+  "name": "type-sound",
+  "version": "0.1.0",
+  "description": "Beep boop sounds",
+  "license": "MIT",
+  "author": "srgooglo",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "wav": "^1.0.2"
+  }
+}
