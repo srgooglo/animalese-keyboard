@@ -1,16 +1,37 @@
 {
   "name": "type-sound",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Beep boop sounds",
   "license": "MIT",
   "author": "srgooglo",
-  "type": "module",
-  "main": "main.js",
+  "type": "commonjs",
+  "main": "./dist/main.js",
   "scripts": {
-    "start": "node main.js",
-    "install": "cd mixer && npm install "
+    "install": "cd lib/mixer && npm install",
+    "start": "hermes-node ./src/main.js",
+    "build": "pkg --debug -C Brotli ."
+  },
+  "bin": {
+    "type-sound": "./dist/main.js"
+  },
+  "pkg": {
+    "assets": [
+      "lib/mixer/mixer.node",
+      "lib/input/input.node"
+    ],
+    "scripts": [
+      "dist/main.js"
+    ],
+    "targets": [
+      "node22-linux-x64"
+    ],
+    "outputPath": "build"
   },
   "dependencies": {
     "wav": "^1.0.2"
+  },
+  "devDependencies": {
+    "@ragestudio/hermes": "^1.0.1",
+    "@yao-pkg/pkg": "^6.10.1"
   }
 }

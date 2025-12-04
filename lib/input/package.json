@@ -1,0 +1,9 @@
+{
+  "gypfile": true,
+  "scripts": {
+    "postinstall": "cp -f build/Release/input.node . || true"
+  },
+  "devDependencies": {
+    "node-gyp": "^12.1.0"
+  }
+}

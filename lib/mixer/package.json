@@ -1,0 +1,9 @@
+{
+  "gypfile": true,
+  "scripts": {
+    "postinstall": "cp -f build/Release/mixer.node . || true"
+  },
+  "dependencies": {
+    "nan": "^2.23.0"
+  }
+}
