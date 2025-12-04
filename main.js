@@ -10,6 +10,7 @@ let withAlt = false
 let withCtrl = false
 
 // TODO: fix modifier keys triggers
+// TODO: listen all input events or a default keyboard
 async function main() {
 	if (!process.argv[2]) {
 		console.error("Usage: node main.js <device>")
