@@ -55,8 +55,6 @@ async function main() {
 			withAlt = event.state === "pressed"
 		}
 
-		console.log(event)
-
 		if (event.state === "pressed") {
 			voiceFont.handleTrigger({
 				...event,
