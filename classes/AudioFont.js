@@ -4,6 +4,7 @@ import wav from "wav"
 
 // TODO: Support audio pitch
 // TODO: Support sound fade
+// TODO: add random variation
 // TODO: fix modifier keys triggers
 // TODO: mute on fullscreen or secret mode
 export default class AudioFont {
