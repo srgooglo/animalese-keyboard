@@ -37,6 +37,8 @@ async function main() {
 			return null
 		}
 
+		console.log(event)
+
 		if (
 			event.keyname === "KEY_LEFTSHIFT" ||
 			event.keyname === "KEY_RIGHTSHIFT"

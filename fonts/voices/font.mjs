@@ -2,55 +2,34 @@ const letterDuration = 200
 
 export default {
 	file: "data.wav",
-	onTrigger: (event, trigger, font) => {
-		const key = font.keys[trigger.value]
-
-		if (!key || !key.buff) {
-			return null
-		}
-
-		// copy the buffer
-		let buff = key.buff
-
-		// const randomShift = parseFloat((Math.random() * 0.1 + 0.95).toFixed(2))
-
-		// // apply a random small pitch shift
-		// buff = font.device.player.resample(key.buff, randomShift)
-
-		// apply a fadeout
-		buff = font.device.player.fadeout(buff, 100)
-
-		// play the buffer
-		font.device.player.play(buff)
-	},
 	triggers: [
-		{ key_name: "KEY_1", value: "gwah", shift: true },
-		{ key_name: "KEY_A", value: "a" },
-		{ key_name: "KEY_B", value: "b" },
-		{ key_name: "KEY_C", value: "c" },
-		{ key_name: "KEY_D", value: "d" },
-		{ key_name: "KEY_E", value: "e" },
-		{ key_name: "KEY_F", value: "f" },
-		{ key_name: "KEY_G", value: "g" },
-		{ key_name: "KEY_H", value: "h" },
-		{ key_name: "KEY_I", value: "i" },
-		{ key_name: "KEY_J", value: "j" },
-		{ key_name: "KEY_K", value: "k" },
-		{ key_name: "KEY_L", value: "l" },
-		{ key_name: "KEY_M", value: "m" },
-		{ key_name: "KEY_N", value: "n" },
-		{ key_name: "KEY_O", value: "o" },
-		{ key_name: "KEY_P", value: "p" },
-		{ key_name: "KEY_Q", value: "q" },
-		{ key_name: "KEY_R", value: "r" },
-		{ key_name: "KEY_S", value: "s" },
-		{ key_name: "KEY_T", value: "t" },
-		{ key_name: "KEY_U", value: "u" },
-		{ key_name: "KEY_V", value: "v" },
-		{ key_name: "KEY_W", value: "w" },
-		{ key_name: "KEY_X", value: "x" },
-		{ key_name: "KEY_Y", value: "y" },
-		{ key_name: "KEY_Z", value: "z" },
+		{ key_name: "KEY_1", value: "gwah", shift: true, fadeout: 100 },
+		{ key_name: "KEY_A", value: "a", fadeout: 100 },
+		{ key_name: "KEY_B", value: "b", fadeout: 100 },
+		{ key_name: "KEY_C", value: "c", fadeout: 100 },
+		{ key_name: "KEY_D", value: "d", fadeout: 100 },
+		{ key_name: "KEY_E", value: "e", fadeout: 100 },
+		{ key_name: "KEY_F", value: "f", fadeout: 100 },
+		{ key_name: "KEY_G", value: "g", fadeout: 100 },
+		{ key_name: "KEY_H", value: "h", fadeout: 100 },
+		{ key_name: "KEY_I", value: "i", fadeout: 100 },
+		{ key_name: "KEY_J", value: "j", fadeout: 100 },
+		{ key_name: "KEY_K", value: "k", fadeout: 100 },
+		{ key_name: "KEY_L", value: "l", fadeout: 100 },
+		{ key_name: "KEY_M", value: "m", fadeout: 100 },
+		{ key_name: "KEY_N", value: "n", fadeout: 100 },
+		{ key_name: "KEY_O", value: "o", fadeout: 100 },
+		{ key_name: "KEY_P", value: "p", fadeout: 100 },
+		{ key_name: "KEY_Q", value: "q", fadeout: 100 },
+		{ key_name: "KEY_R", value: "r", fadeout: 100 },
+		{ key_name: "KEY_S", value: "s", fadeout: 100 },
+		{ key_name: "KEY_T", value: "t", fadeout: 100 },
+		{ key_name: "KEY_U", value: "u", fadeout: 100 },
+		{ key_name: "KEY_V", value: "v", fadeout: 100 },
+		{ key_name: "KEY_W", value: "w", fadeout: 100 },
+		{ key_name: "KEY_X", value: "x", fadeout: 100 },
+		{ key_name: "KEY_Y", value: "y", fadeout: 100 },
+		{ key_name: "KEY_Z", value: "z", fadeout: 100 },
 	],
 	keys: {
 		a: [0, letterDuration],

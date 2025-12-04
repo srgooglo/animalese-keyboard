@@ -105,23 +105,42 @@ export default class AudioFont {
 		return this.buffer.subarray(alignedStart, alignedStart + lengthByte)
 	}
 
-	play = (key) => {
-		const buff = this.keys[key]?.buff ?? this.getSpriteBuffer(key)
+	play = (key, options) => {
+		let buff = this.keys[key]?.buff ?? this.getSpriteBuffer(key)
 
 		if (!buff) {
 			console.error(`[${this.id}] AudioFont key ${key} not found`)
 			return null
 		}
 
+		if (options) {
+			// compute pitch multiplier from semitone offset
+			// using the 2^(semitone/12) formula
+			if (typeof options.semitone === "number") {
+				buff = this.device.player.resample(
+					buff,
+					Math.pow(2, options.semitone / 12),
+				)
+			}
+
+			if (typeof options.fadeout === "number") {
+				buff = this.device.player.fadeout(buff, options.fadeout)
+			}
+		}
+
 		return this.device.player.play(buff)
 	}
 
-	handleTrigger = (event) => {
+	findTriggerByEvent = (event) => {
 		if (!this.triggers || !Array.isArray(this.triggers)) {
 			return null
 		}
 
-		const trigger = this.triggers.find((trigger) => {
+		return this.triggers.find((trigger) => {
+			if (trigger.key_name === "ANY") {
+				return true
+			}
+
 			if (trigger.key_name !== event.keyname) {
 				return false
 			}
@@ -140,21 +159,27 @@ export default class AudioFont {
 
 			return true
 		})
+	}
 
-		if (trigger && trigger.value) {
-			console.log(`[${this.id}] AudioFont trigger`, {
-				key_name: event.keyname,
-				value: trigger.value,
-				shift: event.shift,
-				ctrl: event.ctrl,
-				alt: event.alt,
-			})
+	handleTrigger = (event) => {
+		const trigger = this.findTriggerByEvent(event)
 
-			if (typeof this.onTrigger === "function") {
-				return this.onTrigger(event, trigger, this)
-			}
-
-			return this.play(trigger.value)
+		if (!trigger) {
+			return null
 		}
+
+		console.log(`[${this.id}] AudioFont trigger`, {
+			event,
+			trigger,
+		})
+
+		if (typeof this.onTrigger === "function") {
+			return this.onTrigger(event, trigger, this)
+		}
+
+		return this.play(trigger.value, {
+			semitone: trigger.semitone,
+			fadeout: trigger.fadeout,
+		})
 	}
 }

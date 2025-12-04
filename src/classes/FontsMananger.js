@@ -19,7 +19,17 @@ export default class FontManager {
 	fonts = []
 
 	async handleTriggerFromEvent(event) {
+		// let triggers = []
+
 		for (const font of this.fonts) {
+			// const trigger = font.findTriggerByEvent(event)
+
+			// if (trigger) {
+			// 	const triggerKey = font.keys[trigger.value]
+
+			// 	triggers.push({ trigger, triggerKey })
+			// }
+
 			font.handleTrigger(event)
 		}
 	}
